@@ -1,0 +1,28 @@
+#include <cstring>
+#include <iostream>
+
+class Solution {
+public:
+    string clearDigits(string s) {
+        stack<char> q;
+        for (int i = 0 ; i < s.size() ; i ++)
+        {
+            if (s[i] >= '0' && s[i] <= '9' )
+            {
+                if (!q.empty()) q.pop();
+            }
+            else  q.push(s[i]);
+            // if (q.empty()) cout << 1 <<endl;
+            // else cout << q.top() <<endl;
+        }
+        string s1;
+        while(!q.empty())
+        {
+            char s2 = q.top();
+            q.pop();
+            s1 += s2;
+        } 
+        reverse(s1.begin(),s1.end());
+        return s1;
+    }
+};
